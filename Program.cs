@@ -1,18 +1,36 @@
 ﻿using NodaTime;
 
-DateTime dateTime = new DateTime(2023, 10, 27, 22, 0, 0, DateTimeKind.Utc);
-Console.WriteLine("dateTime:\t\t\t\t\t" + dateTime);
-Console.WriteLine("dateTime.AddDays(30):\t\t\t\t" + dateTime.AddDays(30));
+DateTime dateTime = new DateTime(2023, 10, 27, 0, 0, 0, DateTimeKind.Utc);
+Console.WriteLine("dateTime:");
+Console.WriteLine(dateTime);
+Console.WriteLine("dateTime L:");
+Console.WriteLine(dateTime.ToLocalTime());
+Console.WriteLine("dateTime.AddDays(30):");
+Console.WriteLine(dateTime.AddDays(30));
+Console.WriteLine("dateTime.AddDays(30) L:");
+Console.WriteLine(dateTime.AddDays(30).ToLocalTime());
 
 Console.WriteLine();
 
 LocalDateTime localDateTime = LocalDateTime.FromDateTime(dateTime);
-Console.WriteLine("localDateTime:\t\t\t\t\t" + localDateTime);
-Console.WriteLine("localDateTime.PlusDays(30):\t\t\t" + localDateTime.PlusDays(30));
+Console.WriteLine("localDateTime:");
+Console.WriteLine(localDateTime);
+Console.WriteLine("localDateTime.PlusDays(30):");
+Console.WriteLine(localDateTime.PlusDays(30));
 
 Console.WriteLine();
 
-DateTimeZone belgium = DateTimeZoneProviders.Tzdb["Europe/Brussels"];
-ZonedDateTime zonedDateTime = localDateTime.InZoneStrictly(belgium);
-Console.WriteLine("zonedDateTime:\t\t\t\t\t" + zonedDateTime);
-Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)):\t" + zonedDateTime.Plus(Duration.FromDays(30)));
+DateTimeZone dateTimeZone = DateTimeZoneProviders.Tzdb["Europe/Brussels"];
+ZonedDateTime zonedDateTime = localDateTime.InZoneStrictly(dateTimeZone);
+Console.WriteLine("zonedDateTime:");
+Console.WriteLine(zonedDateTime);
+Console.WriteLine("zonedDateTime.ToInstant():");
+Console.WriteLine(zonedDateTime.ToInstant());
+Console.WriteLine("zonedDateTime.IsDaylightSavingTime():");
+Console.WriteLine(zonedDateTime.IsDaylightSavingTime());
+Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)):");
+Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)));
+Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)).IsDaylightSavingTime():");
+Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)).IsDaylightSavingTime());
+Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)).ToInstant():");
+Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)).ToInstant());
