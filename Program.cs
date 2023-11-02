@@ -1,6 +1,6 @@
 ﻿using NodaTime;
 
-DateTime dateTime = new DateTime(2023, 10, 27, 0, 0, 0, DateTimeKind.Utc);
+DateTime dateTime = new DateTime(2023, 10, 26, 22, 0, 0, DateTimeKind.Utc);
 Console.WriteLine("dateTime:");
 Console.WriteLine(dateTime);
 Console.WriteLine("dateTime L:");
@@ -12,7 +12,7 @@ Console.WriteLine(dateTime.AddDays(30).ToLocalTime());
 
 Console.WriteLine();
 
-LocalDateTime localDateTime = LocalDateTime.FromDateTime(dateTime);
+LocalDateTime localDateTime = LocalDateTime.FromDateTime(new DateTime(2023, 10, 27));
 Console.WriteLine("localDateTime:");
 Console.WriteLine(localDateTime);
 Console.WriteLine("localDateTime.PlusDays(30):");
@@ -32,5 +32,5 @@ Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)):");
 Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)));
 Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)).IsDaylightSavingTime():");
 Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)).IsDaylightSavingTime());
-Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)).ToInstant():");
-Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)).ToInstant());
+Console.WriteLine("zonedDateTime.Plus(Duration.FromDays(30)).ToDateTimeUtc():");
+Console.WriteLine(zonedDateTime.Plus(Duration.FromDays(30)).ToDateTimeUtc());
